@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - System Intelligence</title>
     <style>
+        :root {
+            --page-bg: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #4b5563;
+            --accent: #4f46e5;
+            --accent-strong: #4338ca;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,13 +23,15 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.8;
-            color: #1a1a1a;
-            background-color: #ffffff;
+            color: var(--text-primary);
+            background: var(--page-bg);
+            min-height: 100vh;
         }
 
         header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+            backdrop-filter: blur(12px);
             padding: 1rem 0;
             position: sticky;
             top: 0;
@@ -39,130 +50,185 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 1.6rem;
         }
 
         nav a {
-            color: #4b5563;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
             font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
         nav a:hover {
-            color: #1a1a1a;
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        main {
+            padding: 0 1.5rem 5rem;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 3rem 2rem 6rem;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        h2 {
-            font-size: 1.5rem;
+        .hero {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(14, 165, 233, 0.12));
+            border-radius: 28px;
+            padding: clamp(2.75rem, 6vw, 4rem);
             margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: #1a1a1a;
+            margin-bottom: clamp(2.75rem, 6vw, 4.25rem);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 22px 48px -28px rgba(15, 23, 42, 0.4);
         }
 
-        p {
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.55), transparent 58%);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 620px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--accent-strong);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            line-height: 1.12;
+            font-weight: 700;
+            letter-spacing: -0.03em;
             margin-bottom: 1.25rem;
+            color: #0b1120;
+        }
+
+        .hero-subtitle {
+            font-size: 1.08rem;
+            color: rgba(15, 23, 42, 0.88);
+            max-width: 560px;
+        }
+
+        .section {
+            margin-bottom: clamp(2.75rem, 6vw, 4.25rem);
+        }
+
+        .section-title {
+            font-size: 1.65rem;
+            margin-bottom: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .info-card {
+            background: var(--surface);
+            border-radius: 22px;
+            padding: clamp(1.85rem, 4vw, 2.75rem);
+            box-shadow: 0 18px 36px -24px rgba(15, 23, 42, 0.32);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .info-card p {
             font-size: 1.05rem;
-            color: #374151;
+            color: var(--text-secondary);
+            margin-bottom: 1.4rem;
         }
 
-        .contact-section {
-            margin-bottom: 3rem;
-        }
-
-        .contact-method {
-            background: #f9fafb;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border: 1px solid #e5e7eb;
-        }
-
-        .contact-method h3 {
-            font-size: 1.25rem;
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent);
             font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-method a {
-            color: #2563eb;
             text-decoration: none;
-            font-weight: 500;
+            letter-spacing: 0.01em;
+            font-size: 1rem;
         }
 
-        .contact-method a:hover {
-            text-decoration: underline;
+        .contact-link:hover {
+            color: var(--accent-strong);
         }
 
-        .contact-method p {
-            margin-bottom: 0.5rem;
-            color: #4b5563;
-        }
-
-        .community-links {
+        .resource-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.6rem;
         }
 
-        .community-card {
-            background: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .community-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .community-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0.75rem;
-        }
-
-        .community-card a {
-            color: #2563eb;
+        .resource-card {
+            background: var(--surface);
+            border-radius: 18px;
+            padding: 1.85rem;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 16px 32px -26px rgba(15, 23, 42, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
             text-decoration: none;
-            font-weight: 500;
+            color: inherit;
         }
 
-        .community-card a:hover {
-            text-decoration: underline;
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 38px -24px rgba(79, 70, 229, 0.32);
+            border-color: rgba(79, 70, 229, 0.25);
+        }
+
+        .resource-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+
+        .resource-card p {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+        }
+
+        .resource-card span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.95rem;
         }
 
         footer {
-            background: #f9fafb;
-            border-top: 1px solid #e5e7eb;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            background: #0b1120;
+            color: rgba(226, 232, 240, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.6rem 0;
         }
 
         .footer-content {
@@ -172,40 +238,61 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .social-links {
             display: flex;
             gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
-            color: #6b7280;
+            color: rgba(226, 232, 240, 0.7);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s ease;
+            font-weight: 500;
+            letter-spacing: 0.01em;
         }
 
         .social-links a:hover {
-            color: #1a1a1a;
+            color: #ffffff;
         }
 
-        @media (max-width: 768px) {
-            nav ul {
+        @media (max-width: 900px) {
+            .resource-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
                 flex-direction: column;
+                align-items: flex-start;
                 gap: 1rem;
             }
 
-            h1 {
-                font-size: 2rem;
+            nav ul {
+                gap: 1rem;
             }
 
-            .community-links {
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2.35rem;
+            }
+
+            .resource-grid {
                 grid-template-columns: 1fr;
             }
 
             .footer-content {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
+                gap: 1.25rem;
             }
         }
     </style>
@@ -222,58 +309,55 @@
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Contact Us</h1>
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="hero-label">Contact</span>
+                    <h1>Connect with our team.</h1>
+                    <p class="hero-subtitle">Reach out for collaborations, share research opportunities, or follow our work as we explore AI-native systems innovation.</p>
+                </div>
+            </section>
 
-        <p>We'd love to hear from you! Whether you're interested in collaboration, have questions about our research, or want to join our community, there are several ways to get in touch.</p>
+            <section class="section">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="info-card">
+                    <p>We welcome questions, partnerships, and community conversations about AI for systems research. Drop us a line and we’ll get back to you soon.</p>
+                    <a class="contact-link" href="mailto:systemintelligence0@gmail.com">systemintelligence0@gmail.com →</a>
+                </div>
+            </section>
 
-        <div class="contact-section">
-            <h2>General Inquiries</h2>
-
-            <div class="contact-method">
-                <h3>Email</h3>
-                <p>For general questions, collaboration opportunities, or press inquiries:</p>
-                <a href="mailto:systemintelligence0@gmail.com">systemintelligence0@gmail.com</a>
-            </div>
+            <section class="section">
+                <h2 class="section-title">Join the Community</h2>
+                <div class="resource-grid">
+                    <a class="resource-card" href="https://github.com/systemintelligence" target="_blank" rel="noopener">
+                        <h3>GitHub</h3>
+                        <p>Explore open-source tooling, prototypes, and experiments from the community.</p>
+                        <span>View GitHub →</span>
+                    </a>
+                    <a class="resource-card" href="https://huggingface.co/systemintelligence" target="_blank" rel="noopener">
+                        <h3>HuggingFace</h3>
+                        <p>Access models, datasets, and resources that power our research workflows.</p>
+                        <span>Browse Hub →</span>
+                    </a>
+                    <a class="resource-card" href="https://x.com/SysIntelligence" target="_blank" rel="noopener">
+                        <h3>X (Twitter)</h3>
+                        <p>Follow along for announcements, event news, and emerging ideas.</p>
+                        <span>Follow on X →</span>
+                    </a>
+                </div>
+            </section>
         </div>
-
-        <div class="contact-section">
-            <h2>Join Our Community</h2>
-
-            <p>Connect with researchers, developers, and enthusiasts working on system intelligence.</p>
-
-            <div class="community-links">
-                <div class="community-card">
-                    <h3>GitHub</h3>
-                    <p>Explore our open-source projects and contribute.</p>
-                    <a href="https://github.com/systemintelligence" target="_blank">View GitHub →</a>
-                </div>
-
-                <div class="community-card">
-                    <h3>HuggingFace</h3>
-                    <p>Access our models, datasets, and ML resources.</p>
-                    <a href="https://huggingface.co/systemintelligence" target="_blank">View HuggingFace →</a>
-                </div>
-
-                <div class="community-card">
-                    <h3>X (Twitter)</h3>
-                    <p>Follow us for the latest news and research updates.</p>
-                    <a href="https://x.com/SysIntelligence" target="_blank">Follow on X →</a>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
+    </main>
 
     <footer>
         <div class="footer-content">
             <div>&copy; 2025 System Intelligence Community</div>
             <div class="social-links">
                 <a href="mailto:systemintelligence0@gmail.com">Email</a>
-                <a href="https://github.com/systemintelligence" target="_blank">GitHub</a>
-                <a href="https://huggingface.co/systemintelligence" target="_blank">HuggingFace</a>
-                <a href="https://x.com/SysIntelligence" target="_blank">X</a>
+                <a href="https://github.com/systemintelligence" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://huggingface.co/systemintelligence" target="_blank" rel="noopener">HuggingFace</a>
+                <a href="https://x.com/SysIntelligence" target="_blank" rel="noopener">X</a>
             </div>
         </div>
     </footer>
