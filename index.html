@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - System Intelligence</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>System Intelligence</title>
     <style>
         :root {
-            --page-bg: #ffffff;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --accent: #0066cc;
-            --border: #e0e0e0;
+            --bg: white;
+            --fg: #282828;
+            --fg1: #3c3836;
+            --fg2: #504945;
+            --fg3: #6b6866;
+            --fg4: #676767;
+            --hover-bg: rgba(128, 128, 128, 0.12);
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-serif: 'Iowan Old Style BT', Georgia, serif;
         }
 
         * {
@@ -24,466 +25,493 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--page-bg);
+            font-family: var(--font-serif);
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--fg);
+            background: var(--bg);
             font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         header {
-            background: var(--page-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
+            padding: 40px 0 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 9vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 20pt;
-            font-weight: 400;
-            color: var(--text-primary);
-        }
-
-        nav ul {
-            list-style: none;
+            font-family: var(--font-sans);
             display: flex;
             gap: 2.5rem;
+            font-size: 15px;
         }
 
         nav a {
-            color: var(--text-secondary);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            color: var(--fg1);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 400;
-            transition: color 0.2s ease;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s ease-in-out;
         }
 
         nav a:hover {
-            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: rgba(40, 40, 40, 0.2);
+            text-underline-offset: 2px;
         }
 
         main {
-            max-width: 1200px;
-            margin: 60px auto 0;
-            padding: 0 9vw 4rem;
+            padding: 3rem 0 120px;
         }
 
-        .hero {
-            margin-bottom: 4rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .hero-label {
-            font-size: 14px;
+        @keyframes float {
+            0% {
+                transform: translateY(5px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(5px);
+            }
+        }
+
+        .hero-section {
+            text-align: left;
+            margin-bottom: 0;
+            padding-block: 1rem 1.4rem;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .hero-title {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            color: black;
+            border: solid 1px white;
+            backface-visibility: hidden;
+            animation: float 7s ease-in-out infinite;
+            display: inline-block;
+            font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(3em, 8vw, 3.4em);
             font-weight: 400;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-wrap: stable;
+            color: inherit !important;
+            text-decoration: none !important;
+            margin-bottom: 2rem;
         }
 
-        .hero h1 {
-            font-size: 42px;
-            line-height: 1.2;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
+        .announcement {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 3rem;
         }
 
-        .hero-subtitle {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            max-width: 800px;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.18rem 0.4rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F3F3F3 98.08%);
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            border-radius: 100px;
+            color: rgba(40, 40, 40, 0.65);
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 450;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        .section {
-            margin-bottom: 4rem;
+        .announcement-text {
+            font-family: var(--font-sans);
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--fg2);
         }
 
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            color: var(--text-primary);
+        .content-section {
+            text-align: left;
         }
 
-        .card {
-            background: var(--page-bg);
+        section {
+            margin-bottom: 30px;
         }
 
-        .card p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 1.25em 0 0.6em;
+            color: var(--fg);
+            text-align: left;
         }
 
-        .card p:last-child {
+        p {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            color: var(--fg);
+        }
+
+        p:last-child {
             margin-bottom: 0;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 2rem;
-            background: #f8f8f8;
-            border: 1px solid var(--border);
-            color: inherit;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-        }
-
-        .contact-card:hover {
-            background: #f0f0f0;
-        }
-
-        .contact-label {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--text-secondary);
-        }
-
-        .contact-value {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--text-primary);
-        }
-
-        .contact-cta {
-            font-size: 16px;
-            color: var(--accent);
-            margin-top: 0.5rem;
-        }
-
-        .post-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .post-card {
-            background: #f8f8f8;
-            padding: 2.5rem;
-            border: 1px solid var(--border);
-            transition: background-color 0.2s ease;
-        }
-
-        .post-card:hover {
-            background: #f0f0f0;
-        }
-
-        .post-card h2 {
-            font-size: 24px;
-            margin-bottom: 0.5rem;
+        em {
+            font-style: italic;
             font-weight: 400;
         }
 
-        .post-card h2 a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
+        strong {
+            font-weight: 600;
         }
 
-        .post-card h2 a:hover {
-            color: var(--accent);
+        a {
+            color: var(--fg);
+            text-decoration: underline;
+            transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
 
-        .post-meta {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 1rem;
+        a:hover {
+            opacity: 0.7;
         }
 
-        .post-excerpt {
-            color: var(--text-secondary);
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .post-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 16px;
-        }
-
-        .post-link:hover {
+        .content-section a {
+            color: var(--fg);
             text-decoration: underline;
         }
 
-        .coming-soon {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-            font-size: 18px;
+        .blog-post {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #e5e5e5;
         }
 
-        .info-card {
-            background: var(--page-bg);
+        .blog-post:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
-        .info-card p {
+        .blog-post h3 {
             font-size: 18px;
+            font-weight: 500;
             line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 8px;
         }
 
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: var(--accent);
-            font-weight: 400;
+        .blog-post h3 a {
+            color: #000000;
             text-decoration: none;
-            font-size: 18px;
         }
 
-        .contact-link:hover {
+        .blog-post h3 a:hover {
             text-decoration: underline;
+            opacity: 0.5;
         }
 
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 2rem;
+        .blog-meta {
+            font-size: 15px;
+            color: #737373;
+            margin-bottom: 12px;
         }
 
-        .resource-card {
-            background: #f8f8f8;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: background-color 0.2s ease;
+        .blog-excerpt {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #000000;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            margin-bottom: 16px;
+        }
+
+        .resource-list a {
+            color: #000000;
             text-decoration: none;
-            color: inherit;
+            font-size: 18px;
         }
 
-        .resource-card:hover {
-            background: #f0f0f0;
+        .resource-list a:hover {
+            text-decoration: underline;
+            opacity: 0.5;
         }
 
-        .resource-card h3 {
-            font-size: 20px;
-            margin-bottom: 0.75rem;
-            font-weight: 400;
-            color: var(--text-primary);
+        .resource-description {
+            color: #737373;
         }
 
-        .resource-card p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        #join-us {
+            margin-bottom: 20px;
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .community-card {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 1.5rem 1.25rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3c3836 0%, #6b6866 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .community-card:hover {
+            background: #ffffff;
+            border-color: #d5d5d5;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .community-card:hover::before {
+            opacity: 1;
+        }
+
+        .community-card h3 {
+            font-family: var(--font-sans);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #000000;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .community-card:hover h3 {
+            color: #3c3836;
+        }
+
+        .community-card p {
+            font-size: 14px;
+            color: #6b6866;
+            margin: 0;
             line-height: 1.6;
+            font-weight: 400;
         }
 
-        .resource-card span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-weight: 400;
-            color: var(--accent);
-            font-size: 16px;
+        .community-card a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            height: 100%;
         }
 
         footer {
-            background: #1a1a1a;
-            border-top: 1px solid #333333;
-            padding: 3rem 0;
+            font-family: var(--font-sans);
+            border-top: 1px solid #e5e5e5;
+            padding: 30px 0 40px;
+            margin-top: 0;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 9vw;
+            font-family: var(--font-sans);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2rem;
             flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: var(--fg4);
         }
 
         .footer-content > div:first-child {
-            font-size: 14px;
-            color: #999999;
+            font-family: var(--font-sans);
         }
 
-        .social-links {
+        .footer-links {
+            font-family: var(--font-sans);
             display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .social-links a {
-            color: #999999;
+        .footer-links a {
+            font-family: var(--font-sans);
+            color: var(--fg4);
             text-decoration: none;
-            transition: color 0.2s ease;
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 0.9rem;
+            transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
 
-        .social-links a:hover {
-            color: #ffffff;
+        .footer-links a:hover {
+            color: var(--fg3);
+            opacity: 1;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 30px 0 40px;
+                justify-content: flex-start;
+            }
+
             nav {
-                padding: 0 5vw;
+                gap: 32px;
+            }
+
+            .hero-title {
+                font-size: 56px;
             }
 
             main {
-                padding: 0 5vw 4rem;
+                padding: 0 0 80px;
             }
 
-            .footer-content {
-                padding: 0 5vw;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .resource-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .section-title {
-                font-size: 24px;
-            }
-
-            .post-card h2 {
-                font-size: 20px;
-            }
-
-            .resource-grid {
-                grid-template-columns: 1fr;
+            section {
+                margin-bottom: 50px;
             }
 
             .footer-content {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
+                gap: 16px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">System Intelligence</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#blogs">Blogs</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="blog.html">Blog</a>
+                <a href="#join-us">About</a>
+            </nav>
+        </header>
 
-    <main>
-        <section class="hero">
-            <h1>Toward System Intelligence</h1>
-            <p class="hero-subtitle">Our vision is a leap towards endogenous system intelligence — given high-level specifications (e.g., optimization objectives, correctness properties), system intelligence can drive continuous discovery of new opportunities and autonomously act on them.</p>
-        </section>
-
-        <section id="about" class="section">
-            <h2 class="section-title">Our Mission</h2>
-            <div class="card">
-                <p>System Intelligence is a research initiative focused on advancing AI's ability to design, implement, and operate next-generation computing systems. Unlike traditional AI approaches that primarily automate coding or bug fixing, System Intelligence represents a fundamental leap: AI that can reason about system architectures and protocols, evaluate trade-offs, apply timeless design principles, and create new abstractions that drive innovation.</p>
-                <p>However, despite the promise of this concept, the definition of System Intelligence has remained vague—slowing progress and limiting collaboration across the field. Our mission is to change that. We aim to sharpen the vision of System Intelligence and develop practical methods that empower AI to perform systems research and innovation with human-like creativity, rigor, and autonomy.</p>
+        <main>
+            <div class="hero-section">
+                <h1 class="hero-title">SYSTEM<br>INTELLIGENCE</h1>
             </div>
-        </section>
 
-        <section id="blogs" class="section">
-            <h2 class="section-title">Insights and Research Notes</h2>
-            <p class="hero-subtitle" style="margin-bottom: 2rem;">Explore perspectives on autonomous systems design, AI tooling for systems research, and the experiments shaping this emerging discipline.</p>
-            <div class="post-grid">
-                <article class="post-card">
-                    <h2><a href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">The Next Horizon of System Intelligence</a></h2>
-                    <div class="post-meta">September 25, 2025 · Chieh-Jan Mike Liang, Haoran Qiu, Francis Y. Yan, Tianyin Xu, Lidong Zhou</div>
-                    <p class="post-excerpt">
-                        This piece introduces a series examining AI's role in systems research. We propose a shift toward endogenous system intelligence—systems that self-evolve autonomously instead of relying solely on human intervention.
-                    </p>
-                    <a class="post-link" href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">Read the article →</a>
-                </article>
+            <div class="content-section">
+                <p>System intelligence is an artificial intelligence research initiative. We're building a future where advanced AI can design, implement, and operate next-generation computing systems.</p>
+
+                <p>While AI capabilities have advanced dramatically, key gaps remain. To realize system intelligence must unlock AI's next stage of capabilities – reasoning about architectures and protocols, weighing tradeoffs, applying enduring principles, developing effective abstractions, and more – beyond coding and bug fixing. We believe that realizing system intelligence requires the collective efforts of the entire system research community and must be accomplished atop the decades of systems research expertise and experience (much of which today’s AI has never seen in its training data).
+
+                Therefore, we're building system intelligence community and wants to leverage collective efforts to make push this initiative move forward, making AI systems more widely understood, customizable and generally capable.</p>
+
+                <p>We are researchers, engineers, and builders across universities and industry labs, united by our passion for intelligent systems and their real-world realization. Our team has expetise across systems research and AI.</p>
             </div>
-            <div class="coming-soon">More research notes and updates are on the way. Stay tuned.</div>
-        </section>
 
-        <section id="contact" class="section">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="info-card">
+            <section id="research">
+                <h2>Community matters</h2>
+                <p><em>Working on what matters most.</em> We focus our energy on the problems that will have the greatest impact on the future of AI and systems research. By prioritizing meaningful challenges over easy wins, we ensure our work contributes to lasting progress.</p>
+                <p><em>A culture of respect and shared purpose.</em> Our community is built on kindness, collaboration, and a commitment to help one another grow. We value diverse perspectives and treat each other with respect, even when opinions differ. Knowledge is shared openly, support is freely given, and everyone is aligned toward a common goal. In this environment, we lift each other up and advance together.</p>
+            </section>
+
+            <section id="blog">
+                <h2>Latest updates</h2>
+                <div class="blog-post">
+                    <h3><em>Our blog is posted on SIGOPS - </em><a href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">The Next Horizon of System Intelligence</a></h3>
+                    <div class="blog-meta">September 23, 2025 · Chieh-Jan Mike Liang, Haoran Qiu, Francis Y. Yan, Tianyin Xu, Lidong Zhou</div>
+                </div>
+            </section>
+
+            <section id="join-us">
+                <h2>Contact us</h2>
                 <p>We are a team of researchers from universities and industry labs, united by our passion for intelligent systems and their real-world realization. We welcome questions, collaborations, and community discussions on AI for systems research. Feel free to reach out — we'd love to connect and will get back to you soon.</p>
-                <a class="contact-link" href="mailto:systemintelligence0@gmail.com">systemintelligence0@gmail.com →</a>
-            </div>
-        </section>
+                <div class="community-grid">
+                    <div class="community-card">
+                        <a href="mailto:systemintelligence0@gmail.com">
+                            <h3>Email</h3>
+                            <p>Reach out for questions and collaborations</p>
+                        </a>
+                    </div>
+                    <div class="community-card">
+                        <a href="https://github.com/systemintelligence" target="_blank" rel="noopener">
+                            <h3>GitHub</h3>
+                            <p>Open-source tooling, prototypes, and experiments</p>
+                        </a>
+                    </div>
+                    <div class="community-card">
+                        <a href="https://join.slack.com/t/system-intelligence/shared_invite/zt-3hpkgr2aa-NnuPxUbyHr45S89DFi_N1A" target="_blank" rel="noopener">
+                            <h3>Slack</h3>
+                            <p>Join our community discussions and collaborations</p>
+                        </a>
+                    </div>
+                    <div class="community-card">
+                        <a href="https://x.com/SysIntelligence" target="_blank" rel="noopener">
+                            <h3>X</h3>
+                            <p>Follow for announcements and updates</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-        <section class="section">
-            <h2 class="section-title">Join the Community</h2>
-            <div class="resource-grid">
-                <a class="resource-card" href="https://github.com/systemintelligence" target="_blank" rel="noopener">
-                    <h3>GitHub</h3>
-                    <p>Explore open-source tooling, prototypes, and experiments from the community.</p>
-                    <span>View GitHub →</span>
-                </a>
-                <a class="resource-card" href="https://huggingface.co/systemintelligence" target="_blank" rel="noopener">
-                    <h3>HuggingFace</h3>
-                    <p>Access models, datasets, and resources that power our research workflows.</p>
-                    <span>Browse Hub →</span>
-                </a>
-                <a class="resource-card" href="https://x.com/SysIntelligence" target="_blank" rel="noopener">
-                    <h3>X (Twitter)</h3>
-                    <p>Follow along for announcements, event news, and emerging ideas.</p>
-                    <span>Follow on X →</span>
-                </a>
+        <footer>
+            <div class="footer-content">
+                <div>&copy; 2025 System Intelligence Community</div>
+                <div class="footer-links">
+                    <a href="mailto:systemintelligence0@gmail.com">Email</a>
+                    <a href="https://github.com/systemintelligence" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://join.slack.com/t/system-intelligence/shared_invite/zt-3hpkgr2aa-NnuPxUbyHr45S89DFi_N1A" target="_blank" rel="noopener">Slack</a>
+                    <a href="https://x.com/SysIntelligence" target="_blank" rel="noopener">X</a>
+                </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div>&copy; 2025 System Intelligence Community</div>
-            <div class="social-links">
-                <a href="mailto:systemintelligence0@gmail.com">Email</a>
-                <a href="https://github.com/systemintelligence" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://huggingface.co/systemintelligence" target="_blank" rel="noopener">HuggingFace</a>
-                <a href="https://x.com/SysIntelligence" target="_blank" rel="noopener">X</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>

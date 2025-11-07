@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - System Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Iowan Old Style BT', Georgia, serif;
+            font-size: 17px;
+            line-height: 1.5;
+            color: #282828;
+            background: #fafaf9;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 660px;
+            margin: 0 auto;
+            padding: 0 1.6rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 40px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            color: #676767;
+            text-decoration: none;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        nav {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            gap: 2.5rem;
+            font-size: 15px;
+        }
+
+        nav a {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 500;
+            color: #3c3836;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            text-decoration-color: rgba(40, 40, 40, 0.2);
+            text-underline-offset: 2px;
+        }
+
+        main {
+            padding: 30px 0 120px;
+            flex: 1;
+        }
+
+        .page-title {
+            font-family: 'Iowan Old Style BT', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            padding-top: 0.5rem;
+            color: #282828;
+        }
+
+        .page-subtitle {
+            font-family: 'Iowan Old Style BT', Georgia, serif;
+            font-size: 17px;
+            font-style: italic;
+            line-height: 1.5;
+            color: #737373;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding-top: 2rem;
+        }
+
+        .blog-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            align-items: baseline;
+            line-height: 1.4;
+            padding: 1.2rem 1.5rem;
+            margin: 0 -1.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .blog-item:hover {
+            background-color: rgba(128, 128, 128, 0.12);
+        }
+
+        .blog-date {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 15px;
+            color: #676767;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: left;
+            transition: opacity 0.2s ease;
+        }
+
+        .blog-item:hover .blog-date {
+            color: #6b6866;
+        }
+
+        .blog-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .blog-title {
+            font-family: 'Iowan Old Style BT', Georgia, serif;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.4;
+            color: #282828;
+            margin-bottom: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .blog-title a {
+            color: #282828;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .blog-item:hover .blog-title a {
+            text-decoration: underline;
+            text-decoration-color: rgba(80, 73, 69, 0.2);
+            text-underline-offset: 2px;
+        }
+
+        .blog-author {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            color: #676767;
+            line-height: 1.5;
+            padding-top: 10px;
+            transition: opacity 0.2s ease;
+        }
+
+        .blog-item:hover .blog-author {
+            color: #6b6866;
+        }
+
+        footer {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            border-top: 1px solid #e5e5e5;
+            padding: 30px 0 40px;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #676767;
+        }
+
+        .footer-content > div:first-child {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #676767;
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .footer-links a:hover {
+            color: #6b6866;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.3rem;
+            }
+
+            header {
+                padding: 30px 0 40px;
+                justify-content: flex-start;
+            }
+
+            nav {
+                gap: 2rem;
+            }
+
+            .blog-item {
+                display: block;
+                padding: 1.6rem;
+                margin: 0 -1.6rem;
+            }
+
+            .blog-date {
+                display: none;
+            }
+
+            main {
+                padding: 40px 0 80px;
+            }
+
+            footer {
+                padding-bottom: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="new.html" class="logo">System Intelligence</a>
+            <nav>
+                <a href="blog.html">Blog</a>
+                <a href="new.html#join-us">About</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="page-title">Research Notes</h1>
+            <p class="page-subtitle">Sharing progress, findings, and ideas from the research team</p>
+
+            <div class="blog-list">
+                <article class="blog-item">
+                    <div class="blog-date">Nov 15</div>
+                    <div class="blog-content">
+                        <h2 class="blog-title">
+                            <a href="#" target="_blank" rel="noopener">Defining System Intelligence (coming soon)</a>
+                        </h2>
+                        <p class="blog-author">System Intelligence v-Team</p>
+                    </div>
+                </article>
+
+                <article class="blog-item">
+                    <div class="blog-date">Sep 29</div>
+                    <div class="blog-content">
+                        <h2 class="blog-title">
+                            <a href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">The Next Horizon of System Intelligence</a>
+                        </h2>
+                        <p class="blog-author">Chieh-Jan Mike Liang, Haoran Qiu, Francis Y. Yan, Tianyin Xu, Lidong Zhou</p>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div>System Intelligence Community &copy; 2025</div>
+                <div class="footer-links">
+                    <a href="mailto:systemintelligence0@gmail.com">Email</a>
+                    <a href="https://github.com/systemintelligence" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://join.slack.com/t/system-intelligence/shared_invite/zt-3hpkgr2aa-NnuPxUbyHr45S89DFi_N1A" target="_blank" rel="noopener">Slack</a>
+                    <a href="https://x.com/SysIntelligence" target="_blank" rel="noopener">X</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
