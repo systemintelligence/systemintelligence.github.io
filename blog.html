@@ -46,12 +46,12 @@
         header {
             padding: 40px 0 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
         }
 
         .theme-toggle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             background: none;
             border: none;
             color: #d4d4d4;
@@ -81,8 +81,9 @@
         nav {
             font-family: 'Iowan Old Style BT', Georgia, serif;
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
             font-size: 15px;
+            align-items: center;
         }
 
         nav a {
@@ -323,12 +324,12 @@
 <body>
     <div class="container">
         <header>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <i class="fa-solid fa-moon"></i>
-            </button>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="index.html#join-us">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </nav>
         </header>
 

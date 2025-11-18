@@ -55,12 +55,12 @@
         header {
             padding: 40px 0 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
         }
 
         .theme-toggle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             background: none;
             border: none;
             color: var(--fg1);
@@ -76,8 +76,9 @@
         nav {
             font-family: var(--font-serif);
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
             font-size: 15px;
+            align-items: center;
         }
 
         nav a {
@@ -465,12 +466,12 @@
 <body>
     <div class="container">
         <header>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <i class="fa-solid fa-moon"></i>
-            </button>
             <nav>
                 <a href="blog.html">Blog</a>
                 <a href="#join-us">About</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </nav>
         </header>
 
@@ -501,7 +502,7 @@
                     <!-- <p>November 19, 2025 · Our System Intelligence Benchmark is available at <a href="https://github.com/sys-intelligence/system_intelligence_benchmark" target="_blank" rel="noopener">GitHub</a>. </p>
                     <p>November 19, 2025 · Our blog <a href="https://www.sigops.org/2025/defining-system-intelligence/" target="_blank" rel="noopener">"Defining System Intelligence"</a> is posted SIGOPS. </p>
                     <p>September 23, 2025 · Our blog <a href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">"The Next Horizon of System Intelligence"</a> is posted on SIGOPS.</p> -->
-                    <div class="blog-meta">November 19, 2025 · Our System Intelligence Benchmark is available at <a href="https://github.com/sys-intelligence/system-intelligence-benchmark" target="_blank" rel="noopener">GitHub</a>. </div>
+                    <div class="blog-meta">November 19, 2025 · Our System Intelligence Benchmark (0.1.0-alpha) is available at <a href="https://github.com/sys-intelligence/system-intelligence-benchmark" target="_blank" rel="noopener">GitHub</a>. </div>
                     <div class="blog-meta">November 19, 2025 · Our blog <a href="https://www.sigops.org/2025/defining-system-intelligence/" target="_blank" rel="noopener">"Defining System Intelligence"</a> is posted SIGOPS. </div>
                     <div class="blog-meta">September 23, 2025 · Our blog <a href="https://www.sigops.org/2025/the-next-horizon-of-system-intelligence/" target="_blank" rel="noopener">"The Next Horizon of System Intelligence"</a> is posted on SIGOPS.</div>
                 </div>
